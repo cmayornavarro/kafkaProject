@@ -1,0 +1,15 @@
+- events writed in logs
+- kafka manages logs 
+- topic : collections of logs
+- topics stored data for a short period of time or indefiniteley
+- each events has data happening in the entreprise
+- applications can communcates with kafka
+- kafka helps getting data in and out
+
+
+Event : thing that has happened . It's a notification. 
+	- changes
+	- user interaction
+	- microservice output
+	
+	- {key,value}: key identifier in the system and not an unique value
