@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/kafkaJava/kafkaJava.iml" filepath="$PROJECT_DIR$/kafkaJava/kafkaJava.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/kafkaProject.iml" filepath="$PROJECT_DIR$/.idea/kafkaProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot/spring-boot.iml" filepath="$PROJECT_DIR$/spring-boot/spring-boot.iml" />
     </modules>
   </component>
 </project>
