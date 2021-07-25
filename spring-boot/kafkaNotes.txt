@@ -26,7 +26,7 @@ event are immutable so you cannot modify it or delete it
 purge messages by size,date...
 logs are saved in file system
 
-PARTITIONING
+PARTITIONING:
 kafka is a distributed system
 brakes a topic in multiples subtopics
 how to know which message to write to which partition?
