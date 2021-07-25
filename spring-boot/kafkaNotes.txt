@@ -27,7 +27,7 @@ purge messages by size,date...
 logs are saved in file system
 
 PARTITIONING:
-kafka is a distributed system
+kafka is a distributed systems
 brakes a topic in multiples subtopics
 how to know which message to write to which partition?
 if a message has no key then the messages are distributed randomly to partitions.
