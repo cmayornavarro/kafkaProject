@@ -1,59 +1,70 @@
+https://kafka.apache.org/quickstart
+
+steps:
+./bin/windows/zookeeper-server-start.bat config/zookeeper.properties
+./bin/windows/kafka-server-start.bat config/server.properties
+./bin/windows/kafka-console-consumer.bat --topic someTopic --group myGroup --bootstrap-server localhost:9092
+./kafka-console-producer.bat --topic someTopic --bootstrap-server localhost:9092
+
+run maven
 
 
 
 #create topic with partitions
-bin\windows\kafka-topics.bat --create --topic christianTopic --replication-factor 1 --partitions 2 --bootstrap-server localhost:9092
+bin\windows\kafka-topics.bat --create --topic someTopic --replication-factor 1 --partitions 2 --bootstrap-server localhost:9092
 
 #list topics
 bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
->christianTopic
+>someTopic
 
-#add a consumer1 with group groupRCU
-bin\windows\kafka-console-consumer.bat --topic christianTopic --group groupRCU --bootstrap-server localhost:9092 
+#add a consumer1 with group myGroup
+bin\windows\kafka-console-consumer.bat --topic someTopic --group myGroup --bootstrap-server localhost:9092 
 
 #list consumers groups
 bin\windows\kafka-consumer-groups.bat --list --bootstrap-server localhost:9092
 
->groupRCU
+>myGroup
 
 
 #list group consumers with partitiones
-bin\windows\kafka-consumer-groups.bat --describe --group groupRCU --members --bootstrap-server localhost:9092
+bin\windows\kafka-consumer-groups.bat --describe --group myGroup --members --bootstrap-server localhost:9092
 >
 GROUP           CONSUMER-ID                                              HOST            CLIENT-ID           #PARTITIONS
-groupRCU        consumer-groupRCU-1-93e2314e-efa1-4c20-85b6-564c1a2667eb /192.168.1.79   consumer-groupRCU-1 2
+myGroup        consumer-myGroup-1-93e2314e-efa1-4c20-85b6-564c1a2667eb /192.168.1.79   consumer-myGroup-1 2
 
-#add a consumer2 with group groupRCU
-bin\windows\kafka-console-consumer.bat --topic christianTopic --group groupRCU --bootstrap-server localhost:9092 
+#add a consumer2 with group myGroup
+bin\windows\kafka-console-consumer.bat --topic someTopic --group myGroup --bootstrap-server localhost:9092 
 
 #list group consumers with partitiones
-bin\windows\kafka-consumer-groups.bat --describe --group groupRCU --members --bootstrap-server localhost:9092
+bin\windows\kafka-consumer-groups.bat --describe --group myGroup --members --bootstrap-server localhost:9092
 >
 
 GROUP           CONSUMER-ID                                              HOST            CLIENT-ID           #PARTITIONS
-groupRCU        consumer-groupRCU-1-b2f85428-1921-49f9-9203-2fcc4bf9dbf3 /192.168.1.79   consumer-groupRCU-1 1
-groupRCU        consumer-groupRCU-1-93e2314e-efa1-4c20-85b6-564c1a2667eb /192.168.1.79   consumer-groupRCU-1 1
+myGroup        consumer-myGroup-1-b2f85428-1921-49f9-9203-2fcc4bf9dbf3 /192.168.1.79   consumer-myGroup-1 1
+myGroup        consumer-myGroup-1-93e2314e-efa1-4c20-85b6-564c1a2667eb /192.168.1.79   consumer-myGroup-1 1
 
-#add a consumer with group groupRCU2
-bin\windows\kafka-console-consumer.bat --topic christianTopic --group groupRCU2 --bootstrap-server localhost:9092 
+#add a consumer with group myGroup2
+bin\windows\kafka-console-consumer.bat --topic someTopic --group myGroup2 --bootstrap-server localhost:9092 
 
 #list group consumers with partitiones
-bin\windows\kafka-consumer-groups.bat --describe --group groupRCU2 --members --bootstrap-server localhost:9092
+bin/windows/kafka-consumer-groups.bat --describe --group myGroup --members --bootstrap-server localhost:9092
 >
 GROUP           CONSUMER-ID                                               HOST            CLIENT-ID            #PARTITIONS
-groupRCU2       consumer-groupRCU2-1-351bd385-39af-496e-b5e9-d60d616c5172 /192.168.1.79   consumer-groupRCU2-1 2
+myGroup2       consumer-myGroup2-1-351bd385-39af-496e-b5e9-d60d616c5172 /192.168.1.79   consumer-myGroup2-1 2
 
+#add partitios
+./bin/kafka-topics.sh --alter --zookeeper localhost:2181 --topic someTopic --partitions 3
 
 #topic information
-bin\windows\kafka-topics.bat --describe --topic christianTopic --bootstrap-server localhost:9092
+bin\windows\kafka-topics.bat --describe --topic someTopic --bootstrap-server localhost:9092
 >
-Topic: christianTopic   TopicId: bhKsOg17SbK7NYgh6LGl8Q PartitionCount: 2       ReplicationFactor: 1    Configs: segment.bytes=1073741824
-        Topic: christianTopic   Partition: 0    Leader: 0       Replicas: 0     Isr: 0
-        Topic: christianTopic   Partition: 1    Leader: 0       Replicas: 0     Isr: 0
+Topic: someTopic   TopicId: bhKsOg17SbK7NYgh6LGl8Q PartitionCount: 2       ReplicationFactor: 1    Configs: segment.bytes=1073741824
+        Topic: someTopic   Partition: 0    Leader: 0       Replicas: 0     Isr: 0
+        Topic: someTopic   Partition: 1    Leader: 0       Replicas: 0     Isr: 0
 
 
 #topic producer
-bin\windows\kafka-console-producer.bat --topic christianTopic --bootstrap-server localhost:9092
+bin\windows\kafka-console-producer.bat --topic someTopic --bootstrap-server localhost:9092
 
 
 ************

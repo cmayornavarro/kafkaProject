@@ -13,3 +13,22 @@ Event : thing that has happened . It's a notification.
 	- microservice output
 	
 	- {key,value}: key identifier in the system and not an unique value
+
+TOPICS
+
+topic is like a table in a relational database
+different topic for different events
+for duplication, filtering data of another topic
+
+topic = queue? topic = log of events
+event are immutable so you cannot modify it or delete it
+
+purge messages by size,date...
+logs are saved in file system
+
+PARTITIONING
+kafka is a distributed system
+brakes a topic in multiples subtopics
+how to know which message to write to which partition?
+if a message has no key then the messages are distributed randomly to partitions.
+If a message has a key, we know where kafka puts the message. messages having the same key are always in the same partition so the order is respected.
